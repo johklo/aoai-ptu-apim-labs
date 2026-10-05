@@ -1,0 +1,23 @@
+<!--
+  Force store=false on the Responses API, regardless of what the client sends.
+  Attach at API or operation scope in front of /responses. See lab-03.
+  The client cannot opt back into persistence.
+-->
+<policies>
+  <inbound>
+    <base />
+    <authentication-managed-identity resource="https://cognitiveservices.azure.com" />
+    <set-query-parameter name="api-version" exists-action="override">
+      <value>2025-03-01-preview</value>
+    </set-query-parameter>
+    <!-- overwrite the request body's store flag to false -->
+    <set-body>@{
+        JObject body = context.Request.Body.As<JObject>(preserveContent: true);
+        body["store"] = false;
+        return body.ToString();
+    }</set-body>
+  </inbound>
+  <backend><base /></backend>
+  <outbound><base /></outbound>
+  <on-error><base /></on-error>
+</policies>

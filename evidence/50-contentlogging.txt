@@ -1,0 +1,71 @@
+=== ContentLogging / abuse monitoring property on res1 ===
+[
+  {
+    "name": "VirtualNetworks",
+    "value": null
+  },
+  {
+    "name": "CustomerManagedKey",
+    "value": null
+  },
+  {
+    "name": "EnabledApimVnet",
+    "value": "true"
+  },
+  {
+    "name": "useEndpointRateLimiter",
+    "value": "Enabled"
+  },
+  {
+    "name": "MaxFineTuneCount",
+    "value": "500"
+  },
+  {
+    "name": "MaxRunningFineTuneCount",
+    "value": "3"
+  },
+  {
+    "name": "MaxUserFileCount",
+    "value": "100"
+  },
+  {
+    "name": "MaxTrainingFileSize",
+    "value": "512000000"
+  },
+  {
+    "name": "MaxUserFileImportDurationInHours",
+    "value": "1"
+  },
+  {
+    "name": "MaxFineTuneJobDurationInHours",
+    "value": "720"
+  },
+  {
+    "name": "MaxEvaluationRunDurationInHours",
+    "value": "5"
+  },
+  {
+    "name": "MaxRunningEvaluationCount",
+    "value": "5"
+  },
+  {
+    "name": "MaxRunningGlobalStandardFineTuneCount",
+    "value": "3"
+  },
+  {
+    "name": "TrustedServices",
+    "value": "Microsoft.CognitiveServices,Microsoft.MachineLearningServices,Microsoft.Search,Microsoft.VideoIndexer"
+  },
+  {
+    "name": "NetworkSecurityPerimeter",
+    "value": null
+  },
+  {
+    "name": "RaiMonitor",
+    "value": null
+  },
+  {
+    "name": "quotaRefundsEnabled",
+    "value": "false"
+  }
+]

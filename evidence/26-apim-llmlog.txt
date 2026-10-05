@@ -1,0 +1,19 @@
+=== APIM LLM logging -> Log Analytics (resource-specific table) captured 2026-10-05T19:39:07 ===
+Table: ApiManagementGatewayLlmLog  | Diagnostic: --export-to-resource-specific true
+API diagnostic largeLanguageModel.logs=enabled, requests/responses messages=all (max 262144 bytes)
+
+-- Token-usage record --
+DeploymentName   : dep-a
+ModelName        : gpt-4.1-mini-2025-04-14
+PromptTokens     : 14
+CompletionTokens : 22
+TotalTokens      : 36
+OperationName    : Microsoft.ApiManagement/ApiManagementGatewayLlmLogs
+Region           : koreacentral
+TimeGenerated    : 05/10/2026 10:34:08
+
+-- Captured request message (first 200 chars) --
+[{"role":"user","content":"Write one sentence about the ocean."}]
+
+-- Captured response message (first 200 chars) --
+{"role":"assistant","content":"The ocean is a vast and mysterious body of saltwater that covers over 70% of the Earth's surface."}

@@ -1,0 +1,4 @@
+=== Prompt caching (automatic, >1024 token identical prefix) captured 2026-10-05T20:06:47 ===
+call 1: prompt_tokens=2027  cached_tokens=0
+call 2: prompt_tokens=2027  cached_tokens=1920
+RESULT: 2nd identical call reuses cached prefix tokens (cached_tokens > 0). No config required.

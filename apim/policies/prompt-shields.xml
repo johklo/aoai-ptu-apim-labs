@@ -1,0 +1,22 @@
+<!--
+  Send the incoming prompt to Azure AI Content Safety Prompt Shields before it
+  reaches the model. If a jailbreak / prompt-injection is detected, APIM blocks
+  the request (returns 4xx). See lab-04.
+  The llm-content-safety policy calls the Content Safety backend; in tenants that
+  force disableLocalAuth=true, authenticate with managed identity (shown).
+  backend-id points to a Content Safety backend you register in APIM.
+-->
+<policies>
+  <inbound>
+    <base />
+    <llm-content-safety backend-id="content-safety-backend" shield-prompt="true">
+      <categories output-type="EightSeverityLevels">
+        <category name="Hate"     threshold="4" />
+        <category name="Violence" threshold="4" />
+      </categories>
+    </llm-content-safety>
+  </inbound>
+  <backend><base /></backend>
+  <outbound><base /></outbound>
+  <on-error><base /></on-error>
+</policies>

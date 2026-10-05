@@ -1,0 +1,6 @@
+ID,Dimension,Requirement,Source,Platform capability,Config / control,Verification,Status,Notes
+EXAMPLE-R01,D1,PII must not leave Korea,Customer policy,Regional/DataZone deployment in Korea Central,Deployment type + region,lab-10 (DataZone availability),Verified,DataZone Std/PTU available KC
+EXAMPLE-R02,D4,Per-service token quota,Customer FinOps,APIM llm-token-limit,Policy counter-key=subscription,lab-07 (429 + Retry-After),Verified,Not on Consumption tier
+EXAMPLE-R03,D5,Block jailbreak prompts,Security baseline,Content Safety Prompt Shields,APIM llm-content-safety,lab-04 (benign false / jailbreak true),Verified,
+EXAMPLE-R04,D6,Encrypt stored content with customer key,Regulation,Customer-managed key (CMK),account.encryption keySource,lab-11 (same-region key required),Verified,Resource-scope not per-deployment
+EXAMPLE-R05,D5,Mask Korean PII before model,Customer policy,Azure AI Language PII,Function pre-processing language=ko,lab-09 (ko detects RRN; misses account no),Needs confirmation,Detection not 100%

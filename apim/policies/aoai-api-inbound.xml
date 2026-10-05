@@ -1,0 +1,26 @@
+<!--
+  Azure OpenAI API — inbound policy (API scope)
+  Pins api-version, authenticates to the backend with the APIM managed identity,
+  and applies a per-subscription token rate limit.
+  Backend serviceUrl = https://<AOAI>.openai.azure.com/openai
+-->
+<policies>
+  <inbound>
+    <base />
+    <!-- authenticate to Azure OpenAI with APIM's managed identity (no key needed) -->
+    <authentication-managed-identity resource="https://cognitiveservices.azure.com" />
+    <!-- pin a known-good data-plane api-version -->
+    <set-query-parameter name="api-version" exists-action="override">
+      <value>2024-10-21</value>
+    </set-query-parameter>
+    <!-- LLM-aware token limit, counted per subscription (see lab-07) -->
+    <llm-token-limit
+      counter-key="@(context.Subscription.Id)"
+      tokens-per-minute="300"
+      estimate-prompt-tokens="false"
+      remaining-tokens-header-name="x-remaining-tokens" />
+  </inbound>
+  <backend><base /></backend>
+  <outbound><base /></outbound>
+  <on-error><base /></on-error>
+</policies>

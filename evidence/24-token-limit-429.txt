@@ -1,0 +1,10 @@
+=== APIM llm-token-limit (300 TPM per subscription) captured 2026-10-05T20:06:21 ===
+Policy: <llm-token-limit counter-key="@(context.Subscription.Id)" tokens-per-minute="300">
+Counter is per-subscription (product svc-a); svc-b has an independent counter.
+
+call 1: HTTP 200  x-remaining-tokens=0
+call 2: HTTP 429  Retry-After=102s  <-- THROTTLED
+call 3: HTTP 429  Retry-After=102s  <-- THROTTLED
+call 4: HTTP 429  Retry-After=102s  <-- THROTTLED
+call 5: HTTP 429  Retry-After=102s  <-- THROTTLED
+call 6: HTTP 429  Retry-After=102s  <-- THROTTLED

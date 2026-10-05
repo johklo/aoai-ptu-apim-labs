@@ -1,0 +1,6 @@
+=== Responses store: cross-identity read within same resource (captured 2026-10-05T20:07:10) ===
+Identity A (user) created stored response id=resp_06a7b60993568e25006ac384de52388195aec1d98ac3ca065c
+Identity B (service principal) GET same id -> HTTP 200 (CAN READ)
+
+RESULT: stored Responses are NOT isolated per caller identity. Any identity with resource-scope
+data access can read another caller's stored response by id. Governance implication for store=true.

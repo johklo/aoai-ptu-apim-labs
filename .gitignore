@@ -1,0 +1,12 @@
+# Local secrets / scratch — never commit
+_v_*
+*.key
+*.pem
+.env
+.env.*
+*.local
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/

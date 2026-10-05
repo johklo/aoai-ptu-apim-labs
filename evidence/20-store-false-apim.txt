@@ -1,0 +1,9 @@
+=== store=false APIM enforcement (captured 2026-10-05T16:25:37) ===
+Policy on APIM resptest API: <set-body> forces body['store']=false; MI auth to backend.
+
+[A] DIRECT to AOAI, store=true  -> id=resp_07af87f9f56cda20006ac350efbbd08195a46e4533faceec55
+    GET by id -> 200  (STORED, as expected)
+[B] THROUGH APIM, client store=true (policy->false) -> id=resp_0ddb4729e23baec3016ac350f2f2e88195b4943819abbabe3a
+    GET by id -> 404  (404 = NOT stored -> APIM enforced store=false)
+
+RESULT: APIM set-body policy overrides client store flag. Client cannot opt back into persistence.

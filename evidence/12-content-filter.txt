@@ -1,0 +1,7 @@
+=== Per-deployment content filter (blocklist 'zebracorn' on dep-b only) captured 2026-10-05T19:40:35 ===
+Same prompt containing blocklisted word sent to each deployment of the SAME resource.
+
+dep-a -> HTTP 200 (allowed)
+dep-b -> HTTP 400 (blocked)  { "error": { "message": "The response was filtered due to the prompt triggering Azure OpenAI\u0027s content management policy. Please modify your prompt and retry. To learn more a
+
+RESULT: content filter / blocklist is per-deployment, not per-resource.

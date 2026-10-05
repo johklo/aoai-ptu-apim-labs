@@ -1,0 +1,13 @@
+=== RBAC boundary: deployment-scope vs resource-scope (captured 2026-10-05T19:47:03) ===
+Same SP (appId 5440ce88-6aca-49b1-91f4-a318cf623802), role 'Cognitive Services OpenAI User'.
+Data-plane call to each deployment of resource aoai-t2v-res1.
+
+[Phase 1] role scoped to .../accounts/aoai-t2v-res1/deployments/dep-a (deployment scope)
+  dep-a -> HTTP 401   dep-b -> HTTP 401   (ARM accepted the assignment; data plane IGNORED it)
+
+[Phase 2] role additionally scoped to .../accounts/aoai-t2v-res1 (resource scope)
+  dep-a -> HTTP 200 (ALLOWED)
+  dep-b -> HTTP 200 (ALLOWED)
+
+RESULT: Azure OpenAI data-plane authorization is at RESOURCE scope. A per-deployment role
+assignment is accepted by ARM but grants NO data-plane access. Resource-scope grants ALL deployments.

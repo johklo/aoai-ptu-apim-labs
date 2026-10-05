@@ -1,0 +1,17 @@
+=== CMK region + scope (verified 2026-10-05, Key Vault) ===
+Source: live test recorded in findings/aoai-ptu-apim-verification.md section 14.
+
+[1] Japan East Key Vault key applied to Korea Central resource aoai-t2v-res1
+    -> HTTP 400  "KeyMustInTheSameLocationOfResource"
+    (CMK key must be in the SAME region as the Azure OpenAI resource)
+
+[2] Korea Central Key Vault key applied to the same resource
+    -> accepted; properties.encryption.keySource = Microsoft.KeyVault
+
+[3] Deployment object has NO encryption property
+    (only capabilities, model, raiPolicyName, rateLimits, scaleSettings).
+    -> CMK is a RESOURCE-level control, not per-deployment.
+
+CONSTRAINT (re-capture 2026-10-05 later run): MCAPS org policy now forces both test Key Vaults
+(kv-t2v-korea6623, kv-t2v-japan6272) to publicNetworkAccess=Disabled, so the KV data plane is not
+reachable from the public endpoint for a fresh capture. Result above stands from the original run.

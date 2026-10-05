@@ -1,0 +1,14 @@
+=== APIM LLM log -> Storage target (captured 2026-10-05T19:43:44) ===
+Diagnostic setting 'llm-to-storage' on APIM, category GatewayLlmLogs routed to Storage account.
+
+storageAccountId: /subscriptions/c4b3d397-1f58-4936-8649-fb329a895133/resourceGroups/rg-type2-verify/providers/Microsoft.Storage/storageAccounts/stt2vlog6631
+logs:
+  - category=GatewayLlmLogs enabled=True
+  - category=GatewayLogs enabled=False
+  - category=WebSocketConnectionLogs enabled=False
+  - category=DeveloperPortalAuditLogs enabled=False
+  - category=GatewayMCPLogs enabled=False
+
+CONSTRAINT: MCAPS org policy forces storage publicNetworkAccess=Disabled and allowSharedKeyAccess=false.
+Blob contents therefore require a private endpoint/VNet to read; routing config itself is accepted.
+LLM log payload already proven populated in Log Analytics target (see 26-apim-llmlog.txt).

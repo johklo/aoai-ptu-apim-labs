@@ -1,0 +1,20 @@
+<!--
+  Per-subscription LLM token rate limit. When the minute budget is spent, APIM
+  returns HTTP 429 with a Retry-After header. See lab-07.
+  Counter-key = subscription id, so each product/subscription has its own budget.
+  Requires Basic v2 or higher (NOT Consumption).
+-->
+<policies>
+  <inbound>
+    <base />
+    <llm-token-limit
+      counter-key="@(context.Subscription.Id)"
+      tokens-per-minute="300"
+      estimate-prompt-tokens="false"
+      remaining-tokens-header-name="x-remaining-tokens"
+      retry-after-header-name="Retry-After" />
+  </inbound>
+  <backend><base /></backend>
+  <outbound><base /></outbound>
+  <on-error><base /></on-error>
+</policies>
